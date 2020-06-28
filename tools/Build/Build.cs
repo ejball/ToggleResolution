@@ -1,3 +1,4 @@
+using System.IO;
 using Faithlife.Build;
 using static Faithlife.Build.DotNetRunner;
 
@@ -20,6 +21,7 @@ internal static class Build
 			.Does(() =>
 			{
 				RunDotNet("publish",
+					Path.Combine("src", "ToggleResolution", "ToggleResolution.csproj"),
 					"-c", buildOptions.ConfigurationOption!.Value,
 					"-r", "win-x86",
 					"--self-contained", "true",
