@@ -1,6 +1,6 @@
 # ToggleResolution
 
-Toggles the primary screen resolution among multiples of the current screen resolution.
+Doubles or halves the primary screen resolution.
 
 [![Build](https://github.com/ejball/ToggleResolution/workflows/Build/badge.svg)](https://github.com/ejball/ToggleResolution/actions?query=workflow%3ABuild)
 
