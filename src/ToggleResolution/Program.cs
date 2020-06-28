@@ -47,7 +47,8 @@ namespace ToggleResolution
 			modeIndex = 0;
 			while (NativeMethods.EnumDisplaySettings(null, modeIndex, ref availableDevMode))
 			{
-				if (availableDevMode.dmPelsWidth == currentDevMode.dmPelsWidth / 2 &&
+				if (availableDevMode.dmPelsWidth >= 800 &&
+					availableDevMode.dmPelsWidth == currentDevMode.dmPelsWidth / 2 &&
 					availableDevMode.dmPelsHeight == currentDevMode.dmPelsHeight / 2 &&
 					availableDevMode.dmBitsPerPel == currentDevMode.dmBitsPerPel &&
 					availableDevMode.dmDisplayFlags == currentDevMode.dmDisplayFlags &&
