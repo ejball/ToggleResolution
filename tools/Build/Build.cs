@@ -16,7 +16,7 @@ internal static class Build
 			});
 
 		build.Target("package")
-			.Describe("Create a standalone executable")
+			.Describe("Creates a standalone executable")
 			.ClearActions()
 			.Does(() =>
 			{
