@@ -7,12 +7,10 @@
 
 ## Guidelines
 
-* All new code **must** have complete unit tests.
-* All public classes, methods, interfaces, enums, etc. **must** have correct XML documentation comments.
 * Update [VersionHistory](VersionHistory.md) with a human-readable description of the change.
 
 ## How to Build
 
 * `git clone https://github.com/ejball/ToggleResolution.git`
 * `cd ToggleResolution`
-* `dotnet test`
+* `dotnet build`
