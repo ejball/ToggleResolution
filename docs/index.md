@@ -1,6 +1,6 @@
 # ToggleResolution
 
-Doubles or halves the primary screen resolution.
+A tool that doubles or halves the primary screen resolution (Windows only).
 
 ## Install
 

@@ -1,6 +1,6 @@
 # ToggleResolution
 
-Doubles or halves the primary screen resolution.
+A tool that doubles or halves the primary screen resolution (Windows only).
 
 [![Build](https://github.com/ejball/ToggleResolution/workflows/Build/badge.svg)](https://github.com/ejball/ToggleResolution/actions?query=workflow%3ABuild)
 
