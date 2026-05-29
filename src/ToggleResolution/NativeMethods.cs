@@ -5,7 +5,7 @@ namespace ToggleResolution
 	internal static class NativeMethods
 	{
 		[StructLayout(LayoutKind.Sequential)]
-		public struct Pointl
+		internal struct Pointl
 		{
 			[MarshalAs(UnmanagedType.I4)]
 			public int x;
@@ -15,7 +15,7 @@ namespace ToggleResolution
 		}
 
 		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-		public struct DEVMODE
+		internal struct DEVMODE
 		{
 			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
 			public string dmDeviceName;
@@ -104,19 +104,22 @@ namespace ToggleResolution
 			public uint dmPanningHeight;
 		}
 
-		public const int ENUM_CURRENT_SETTINGS = -1;     // Retrieves the current display mode.
-		public const uint CDS_UPDATEREGISTRY = 1;
+		internal const int ENUM_CURRENT_SETTINGS = -1;     // Retrieves the current display mode.
+		internal const int DISP_CHANGE_SUCCESSFUL = 0;
+		internal const uint CDS_UPDATEREGISTRY = 1;
 
-		[DllImport("User32.dll")]
+		[DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
+		[DllImport("User32.dll", CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
-		public static extern bool EnumDisplaySettings(
-			[param: MarshalAs(UnmanagedType.LPTStr)] string? lpszDeviceName,
+		internal static extern bool EnumDisplaySettings(
+			[param: MarshalAs(UnmanagedType.LPStr)] string? lpszDeviceName,
 			[param: MarshalAs(UnmanagedType.U4)] int iModeNum,
 			[In, Out] ref DEVMODE lpDevMode);
 
+		[DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
 		[DllImport("User32.dll")]
 		[return: MarshalAs(UnmanagedType.I4)]
-		public static extern int ChangeDisplaySettings(
+		internal static extern int ChangeDisplaySettings(
 			[In, Out] ref DEVMODE lpDevMode,
 			[param: MarshalAs(UnmanagedType.U4)] uint dwflags);
 	}

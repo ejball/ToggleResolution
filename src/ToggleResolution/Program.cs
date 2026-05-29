@@ -1,6 +1,4 @@
-using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace ToggleResolution
 {
@@ -22,11 +20,11 @@ namespace ToggleResolution
 
 		private static bool Run()
 		{
-			var currentDevMode = new NativeMethods.DEVMODE();
+			var currentDevMode = default(NativeMethods.DEVMODE);
 			currentDevMode.dmSize = (ushort) Marshal.SizeOf(currentDevMode);
 			NativeMethods.EnumDisplaySettings(null, NativeMethods.ENUM_CURRENT_SETTINGS, ref currentDevMode);
 
-			var availableDevMode = new NativeMethods.DEVMODE();
+			var availableDevMode = default(NativeMethods.DEVMODE);
 			availableDevMode.dmSize = (ushort) Marshal.SizeOf(availableDevMode);
 
 			var modeIndex = 0;
@@ -38,7 +36,7 @@ namespace ToggleResolution
 					availableDevMode.dmDisplayFlags == currentDevMode.dmDisplayFlags &&
 					availableDevMode.dmDisplayFrequency == currentDevMode.dmDisplayFrequency)
 				{
-					NativeMethods.ChangeDisplaySettings(ref availableDevMode, NativeMethods.CDS_UPDATEREGISTRY);
+					ChangeDisplaySettings(ref availableDevMode);
 					return true;
 				}
 				modeIndex++;
@@ -54,7 +52,7 @@ namespace ToggleResolution
 					availableDevMode.dmDisplayFlags == currentDevMode.dmDisplayFlags &&
 					availableDevMode.dmDisplayFrequency == currentDevMode.dmDisplayFrequency)
 				{
-					NativeMethods.ChangeDisplaySettings(ref availableDevMode, NativeMethods.CDS_UPDATEREGISTRY);
+					ChangeDisplaySettings(ref availableDevMode);
 					return true;
 				}
 				modeIndex++;
@@ -69,6 +67,13 @@ namespace ToggleResolution
 			MessageBox.Show(
 				text: string.Join(Environment.NewLine, lines),
 				caption: c_appCaption);
+		}
+
+		private static void ChangeDisplaySettings(ref NativeMethods.DEVMODE devMode)
+		{
+			var result = NativeMethods.ChangeDisplaySettings(ref devMode, NativeMethods.CDS_UPDATEREGISTRY);
+			if (result != NativeMethods.DISP_CHANGE_SUCCESSFUL)
+				throw new InvalidOperationException($"ChangeDisplaySettings failed with result {result}.");
 		}
 
 		private const string c_appCaption = "ToggleResolution";

@@ -1,15 +1,28 @@
 # ignore output folders
-bin/
-obj/
-release/
 
 # ignore user-specific options/cache files
-.vs/
-Thumbs.db
-*.cache
-*.user
-*.userprefs
 *.ncrunchproject
 *.ncrunchsolution
 nCrunchTemp*
+
+# DO NOT EDIT: gitignore-common convention
+.DS_Store
+Thumbs.db
+*.log
+# END DO NOT EDIT
+
+# DO NOT EDIT: gitignore-dotnet convention
+artifacts/
+bin/
+obj/
+release/
+# END DO NOT EDIT
+
+# DO NOT EDIT: gitignore-ide convention
+.vs/
+.idea/
+*.cache
+*.user
+*.userprefs
 _ReSharper*
+# END DO NOT EDIT
