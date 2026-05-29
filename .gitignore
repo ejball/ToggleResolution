@@ -1,7 +1,4 @@
 # ignore output folders
-bin/
-obj/
-release/
 
 # ignore user-specific options/cache files
 .vs/
@@ -17,4 +14,11 @@ _ReSharper*
 .DS_Store
 Thumbs.db
 *.log
+# END DO NOT EDIT
+
+# DO NOT EDIT: gitignore-dotnet convention
+artifacts/
+bin/
+obj/
+release/
 # END DO NOT EDIT
